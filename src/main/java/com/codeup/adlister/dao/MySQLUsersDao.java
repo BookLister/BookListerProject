@@ -1,11 +1,11 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.models.User;
+import com.codeup.adlister.models.Users;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
 
-public class MySQLUsersDao implements Users {
+public class MySQLUsersDao implements com.codeup.adlister.dao.Users {
     private Connection connection;
 
     public MySQLUsersDao(Config config) {
@@ -23,7 +23,7 @@ public class MySQLUsersDao implements Users {
 
 
     @Override
-    public User findByUsername(String username) {
+    public Users findByUsername(String username) {
         String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
@@ -35,7 +35,7 @@ public class MySQLUsersDao implements Users {
     }
 
     @Override
-    public Long insert(User user) {
+    public Long insert(Users user) {
         String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -51,15 +51,17 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-    private User extractUser(ResultSet rs) throws SQLException {
+    private Users extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
         }
-        return new User(
+        return new Users(
             rs.getLong("id"),
             rs.getString("username"),
             rs.getString("email"),
-            rs.getString("password")
+            rs.getString("password"),
+            rs.getInt("genre_preference"),
+            rs.getInt("user_image")
         );
     }
 
