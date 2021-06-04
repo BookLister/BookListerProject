@@ -6,7 +6,7 @@ BookLister is an Ad-Lister where users can go to buy books or post books for sal
 
 ## Database-Design
 
-<img width="800" src="wireframe.png">
+<img width="800" src="images/wireframe.png">
 
 ## TODO's
 
