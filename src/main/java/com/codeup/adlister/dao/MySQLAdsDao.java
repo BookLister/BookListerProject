@@ -1,16 +1,13 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.models.Ad;
+import com.codeup.adlister.models.Ads;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MySQLAdsDao implements Ads {
+public class MySQLAdsDao implements com.codeup.adlister.dao.Ads {
     private Connection connection = null;
 
     public MySQLAdsDao(Config config) {
@@ -27,7 +24,7 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public List<Ad> all() {
+    public List<Ads> all() {
         PreparedStatement stmt = null;
         try {
             stmt = connection.prepareStatement("SELECT * FROM ads");
@@ -39,7 +36,7 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
-    public Long insert(Ad ad) {
+    public Long insert(Ads ad) {
         try {
             String insertQuery = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
@@ -55,17 +52,18 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    private Ad extractAd(ResultSet rs) throws SQLException {
-        return new Ad(
-            rs.getLong("id"),
-            rs.getLong("user_id"),
+    private Ads extractAd(ResultSet rs) throws SQLException {
+        return new Ads(
+            rs.getInt("id"),
+            rs.getInt("user_id"),
             rs.getString("title"),
-            rs.getString("description")
+            rs.getString("description"),
+            rs.getInt("genre_id")
         );
     }
 
-    private List<Ad> createAdsFromResults(ResultSet rs) throws SQLException {
-        List<Ad> ads = new ArrayList<>();
+    private List<Ads> createAdsFromResults(ResultSet rs) throws SQLException {
+        List<Ads> ads = new ArrayList<>();
         while (rs.next()) {
             ads.add(extractAd(rs));
         }
