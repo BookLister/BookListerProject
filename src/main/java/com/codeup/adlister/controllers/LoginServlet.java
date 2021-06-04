@@ -1,8 +1,14 @@
 package com.codeup.adlister.controllers;
 
 import com.codeup.adlister.dao.DaoFactory;
+<<<<<<< HEAD
+import com.codeup.adlister.models.Users;
+
+import org.mindrot.jbcrypt.BCrypt;
+=======
 import com.codeup.adlister.models.User;
 import com.codeup.adlister.util.Password;
+>>>>>>> 4411f8a94655791356ddca0c51958341a7f62fd5
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +30,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        User user = DaoFactory.getUsersDao().findByUsername(username);
+        Users user = DaoFactory.getUsersDao().findByUsername(username);
 
         if (user == null) {
             response.sendRedirect("/login");
