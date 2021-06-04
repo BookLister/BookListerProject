@@ -1,0 +1,45 @@
+CREATE DATABASE IF NOT EXISTS booklister_db;
+
+USE booklister_db;
+
+DROP TABLE IF EXISTS ads;
+DROP TABLE IF EXISTS users;
+
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    genres_id INT UNSIGNED,
+    user_image INT UNSIGNED,
+    PRIMARY KEY (id),
+    FOREIGN KEY (genres_id) REFERENCES genres(id),
+    FOREIGN KEY (user_images) REFERENCES user_images(id)
+);
+
+CREATE TABLE IF NOT EXISTS admins (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    users_id INT UNSIGNED NOT NULL,
+    FOREIGN KEY (users_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS ads (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    users_id INT UNSIGNED NOT NULL,
+    title VARCHAR(240) NOT NULL,
+    description TEXT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (users_id) REFERENCES users(id)
+        ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS genres (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    genre VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS user_images (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    genre VARCHAR(255) NOT NULL
+);
