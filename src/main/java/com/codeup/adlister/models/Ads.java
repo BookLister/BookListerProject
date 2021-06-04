@@ -1,31 +1,29 @@
 package com.codeup.adlister.models;
 
 public class Ads {
-    private Integer id;
-    private Integer users_id;
+    private int id;
+    private int users_id;
     private String title;
     private String description;
-    private Integer genre_id;
+    private int genre_id;
 
-    public Ads(Integer id, Integer userId, String title, String description, Integer genre_id) {
+    public Ads(int id, String title, String description) {
         this.id = id;
-        this.users_id = users_id;
         this.title = title;
         this.description = description;
-        this.genre_id = genre_id;
     }
 
     public Ads() {}
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public long getUserId() {
+    public int getUserId() {
         return users_id;
     }
 

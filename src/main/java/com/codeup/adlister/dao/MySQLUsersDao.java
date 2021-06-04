@@ -56,7 +56,7 @@ public class MySQLUsersDao implements com.codeup.adlister.dao.Users {
             return null;
         }
         return new Users(
-            rs.getLong("id"),
+            rs.getInt("id"),
             rs.getString("username"),
             rs.getString("email"),
             rs.getString("password"),

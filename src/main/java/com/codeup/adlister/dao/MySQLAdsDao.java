@@ -55,10 +55,8 @@ public class MySQLAdsDao implements com.codeup.adlister.dao.Ads {
     private Ads extractAd(ResultSet rs) throws SQLException {
         return new Ads(
             rs.getInt("id"),
-            rs.getInt("user_id"),
             rs.getString("title"),
-            rs.getString("description"),
-            rs.getInt("genre_id")
+            rs.getString("description")
         );
     }
 
