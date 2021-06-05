@@ -1,11 +1,11 @@
 package com.codeup.adlister.models;
 
-public class Admins {
-private Integer users_id;
+public class Admin {
+private int users_id;
 
-public Admins() {}
+public Admin() {}
 
-public Admins(Integer users_id) {
+public Admin(int users_id) {
     this.users_id = users_id;
 }
 
@@ -13,7 +13,7 @@ public Admins(Integer users_id) {
         return users_id;
     }
 
-    public void setUsers_id(Integer users_id) {
+    public void setUsers_id(int users_id) {
         this.users_id = users_id;
     }
 
