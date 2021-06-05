@@ -1,6 +1,6 @@
 package com.codeup.adlister.dao;
 
-import com.codeup.adlister.models.Users;
+import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
@@ -23,7 +23,7 @@ public class MySQLUsersDao implements com.codeup.adlister.dao.Users {
 
 
     @Override
-    public Users findByUsername(String username) {
+    public User findByUsername(String username) {
         String query = "SELECT * FROM users WHERE username = ? LIMIT 1";
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
@@ -35,7 +35,7 @@ public class MySQLUsersDao implements com.codeup.adlister.dao.Users {
     }
 
     @Override
-    public Long insert(Users user) {
+    public int insert(User user) {
         String query = "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
         try {
             PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -45,17 +45,17 @@ public class MySQLUsersDao implements com.codeup.adlister.dao.Users {
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
-            return rs.getLong(1);
+            return rs.getInt(1);
         } catch (SQLException e) {
             throw new RuntimeException("Error creating new user", e);
         }
     }
 
-    private Users extractUser(ResultSet rs) throws SQLException {
+    private User extractUser(ResultSet rs) throws SQLException {
         if (! rs.next()) {
             return null;
         }
-        return new Users(
+        return new User(
             rs.getInt("id"),
             rs.getString("username"),
             rs.getString("email"),

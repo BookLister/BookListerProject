@@ -1,6 +1,8 @@
 package com.codeup.adlister.dao;
 
+import com.codeup.adlister.models.User;
+
 public interface Users {
-    com.codeup.adlister.models.Users findByUsername(String username);
-    Long insert(com.codeup.adlister.models.Users user);
+    User findByUsername(String username);
+    int insert(User user);
 }

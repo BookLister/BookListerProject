@@ -1,11 +1,11 @@
 package com.codeup.adlister.models;
 
-public class Genres {
+public class Genre {
     private String genre;
 
-    public Genres() {}
+    public Genre() {}
 
-    public Genres(String genre){
+    public Genre(String genre){
         this.genre = genre;
     }
 
