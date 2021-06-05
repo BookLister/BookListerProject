@@ -25,17 +25,12 @@ public class CreateAdServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
-        Genre genre = new Genre();
 
-        genre.setGenre((String) request.getSession().getAttribute("genre"));
-
-//        if(request.getSession().getAttribute("genre").equals("Adventure")) {
-//                    genre.setGenre("Adventure");
-//        }
-
+        String genre_id_string = request.getParameter("genre");
+        int genre_id = Integer.parseInt(genre_id_string);
         Ad ad = new Ad(
                 user.getId(),
-                genre.getId(),
+                genre_id,
                 request.getParameter("title"),
                 request.getParameter("description")
         );
