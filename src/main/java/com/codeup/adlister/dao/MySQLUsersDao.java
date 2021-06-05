@@ -59,9 +59,7 @@ public class MySQLUsersDao implements com.codeup.adlister.dao.Users {
             rs.getInt("id"),
             rs.getString("username"),
             rs.getString("email"),
-            rs.getString("password"),
-            rs.getInt("genre_preference"),
-            rs.getInt("user_image")
+            rs.getString("password")
         );
     }
 

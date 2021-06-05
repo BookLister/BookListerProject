@@ -1,3 +1,4 @@
+DROP DATABASE booklister_db;
 CREATE DATABASE IF NOT EXISTS booklister_db;
 
 USE booklister_db;
@@ -5,17 +6,18 @@ USE booklister_db;
 DROP TABLE IF EXISTS ads;
 DROP TABLE IF EXISTS users;
 
-
 CREATE TABLE IF NOT EXISTS users (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    genres_id INT UNSIGNED,
-    user_images_id INT UNSIGNED,
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (genres_id) REFERENCES genres(id),
-    FOREIGN KEY (user_images_id) REFERENCES user_images(id)
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS genres (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    genre VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS admins (
@@ -35,12 +37,6 @@ CREATE TABLE IF NOT EXISTS ads (
     FOREIGN KEY (users_id) REFERENCES users(id),
     FOREIGN KEY (genres_id) REFERENCES genres(id)
         ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS genres (
-    id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    genre VARCHAR(255) NOT NULL,
-    PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS user_images (

@@ -38,7 +38,7 @@ public class MySQLAdsDao implements Ads {
     @Override
     public int insert(Ad ad) {
         try {
-            String insertQuery = "INSERT INTO ads(user_id, title, description, genres_id) VALUES (?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO ads(users_id, title, description, genres_id) VALUES (?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, ad.getUserId());
             stmt.setString(2, ad.getTitle());
@@ -56,8 +56,8 @@ public class MySQLAdsDao implements Ads {
     private Ad extractAd(ResultSet rs) throws SQLException {
         return new Ad(
             rs.getInt("id"),
-            rs.getInt("user_id"),
-            rs.getInt("genre_id"),
+            rs.getInt("users_id"),
+            rs.getInt("genres_id"),
             rs.getString("title"),
             rs.getString("description")
         );
