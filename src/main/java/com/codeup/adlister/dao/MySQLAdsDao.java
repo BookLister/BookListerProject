@@ -29,7 +29,7 @@ public class MySQLAdsDao implements Ads {
     public List<Ad> all() {
         PreparedStatement stmt;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM ads");
+            stmt = connection.prepareStatement("SELECT *, genre FROM ads JOIN genres ON ads.genres_id = genres.id");
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
         } catch (SQLException e) {
@@ -42,26 +42,42 @@ public class MySQLAdsDao implements Ads {
         PreparedStatement stmt;
         try {
             String searchQuery = "SELECT * FROM ads WHERE title LIKE ?";
-            String searchTermWithWildcards = "'%" + searchTerm + "%'";
+            String searchTermWithWildcards = "%" + searchTerm + "%";
             stmt = connection.prepareStatement(searchQuery);
             stmt.setString(1, searchTermWithWildcards);
+            System.out.println("stmt = " + stmt);
             ResultSet rs = stmt.executeQuery();
-            System.out.println(searchTerm);
             return createAdsFromResults(rs);
         } catch (SQLException e) {
             throw new RuntimeException("Error retrieving searched ads.", e);
         }
     }
 
+    public List<Ad> filterAds(String filter) {
+        PreparedStatement stmt;
+        try {
+            String filterQuery = "SELECT * FROM ads JOIN genres ON ads.genres_id = genres.id WHERE ads.genres_id = ?";
+            stmt = connection.prepareStatement(filterQuery);
+            stmt.setString(1, filter);
+            System.out.println("stmt = " + stmt);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving filtered ads.", e);
+        }
+    }
+
     @Override
     public int insert(Ad ad) {
         try {
-            String insertQuery = "INSERT INTO ads(users_id, title, description, genres_id) VALUES (?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO ads(users_id, genres_id, title, price, description, summary) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, ad.getUserId());
-            stmt.setString(2, ad.getTitle());
-            stmt.setString(3, ad.getDescription());
-            stmt.setInt(4, ad.getGenre_id());
+            stmt.setInt(2, ad.getGenre_id());
+            stmt.setString(3, ad.getTitle());
+            stmt.setDouble(4, ad.getPrice());
+            stmt.setString(5, ad.getDescription());
+            stmt.setString(6, ad.getSummary());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -77,7 +93,10 @@ public class MySQLAdsDao implements Ads {
             rs.getInt("users_id"),
             rs.getInt("genres_id"),
             rs.getString("title"),
-            rs.getString("description")
+            rs.getDouble("price"),
+            rs.getString("description"),
+            rs.getString("summary")
+
         );
     }
 
