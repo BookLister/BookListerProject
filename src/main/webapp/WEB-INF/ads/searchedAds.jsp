@@ -19,11 +19,10 @@
 <div class="container">
     <h1>Here Are all your searched for ads!</h1>
 
-    <c:forEach var="searchedAds" items="${searchedAds}">
+    <c:forEach var="searchedAds" items="${ads}">
         <div class="col-md-6">
             <h2>${searchedAds.title}</h2>
             <p>${searchedAds.description}</p>
-            <p>Hello!</p>
         </div>
     </c:forEach>
 </div>

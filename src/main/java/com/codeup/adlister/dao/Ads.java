@@ -11,4 +11,6 @@ public interface Ads {
     int insert(Ad ad);
 
     List<Ad> searchAds(String string);
+
+    List<Ad> filterAds(String val);
 }

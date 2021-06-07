@@ -9,15 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers/SearchFormServlet", urlPatterns = "/search")
-public class SearchFormServlet extends HttpServlet {
+@WebServlet(name = "controllers/AdFilterServlet", urlPatterns = "/filter")
+public class FilterFormServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/ads/search.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String val = request.getParameter("search");
-        request.getSession().setAttribute("ads", DaoFactory.getAdsDao().searchAds(val));
-        response.sendRedirect("/searchAds");
+        String val = request.getParameter("genreFilter");
+        System.out.println("val = " + val);
+        request.getSession().setAttribute("ads", DaoFactory.getAdsDao().filterAds(val));
+        response.sendRedirect("/filteredAds");
     }
 }

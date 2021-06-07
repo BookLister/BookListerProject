@@ -9,11 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers/SearchAdsServlet", urlPatterns = "/searchAds")
-public class SearchAdsServlet extends HttpServlet {
+@WebServlet(name = "controllers/FilterAdsServlet", urlPatterns = "/filteredAds")
+public class FilterAdsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        System.out.println(request.getParameter("searchTerm"));
-//        request.setAttribute("searchedAds", DaoFactory.getAdsDao().searchAds(request.getParameter("searchTerm")));
-        request.getRequestDispatcher("/WEB-INF/ads/searchedAds.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ads/filteredAds.jsp").forward(request, response);
     }
 }

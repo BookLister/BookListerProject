@@ -32,7 +32,9 @@ CREATE TABLE IF NOT EXISTS ads (
     users_id INT UNSIGNED NOT NULL,
     genres_id INT UNSIGNED NOT NULL,
     title VARCHAR(255) NOT NULL,
+    price DOUBLE UNSIGNED NOT NULL,
     description TEXT NOT NULL,
+    summary TEXT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (users_id) REFERENCES users(id),
     FOREIGN KEY (genres_id) REFERENCES genres(id)
