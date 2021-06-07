@@ -14,9 +14,9 @@
 
 <form action="/search" method="post">
 
-    <label for="searchBar">Search Bar</label>
-    <input id="searchBar" type="text" name="searchTerm">
-    <button type="submit" id="search-submit">Submit</button>
+    <label for="searchTerm">Search Bar</label>
+    <input id="searchTerm" type="text" name="search">
+    <input type="submit" id="search-submit">
 </form>
 
 </body>
