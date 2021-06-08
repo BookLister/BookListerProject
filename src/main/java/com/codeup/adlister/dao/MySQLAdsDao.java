@@ -25,6 +25,7 @@ public class MySQLAdsDao implements Ads {
 
 
 
+    //Display ALL ads
     @Override
     public List<Ad> all() {
         PreparedStatement stmt;
@@ -53,6 +54,7 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    //Display filtered ads by genre
     public List<Ad> filterAds(String filter) {
         PreparedStatement stmt;
         try {
@@ -67,6 +69,7 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    //Display a specific user's ads
     public List<Ad> userAds(int id) {
         PreparedStatement stmt;
         try {
@@ -81,6 +84,94 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public void editTitle(String newTitle, int id) {
+        PreparedStatement stmt;
+        try {
+            String editTitleQuery = "UPDATE ads SET title = ? WHERE id = ?";
+            stmt = connection.prepareStatement(editTitleQuery);
+            stmt.setString(1, newTitle);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+        } catch(SQLException e) {
+            throw new RuntimeException("Error editing ad title.", e);
+        }
+    }
+
+    public void editPrice(int newPrice, int id) {
+        PreparedStatement stmt;
+        try {
+            String editTitleQuery = "UPDATE ads SET price = ? WHERE id = ?";
+            stmt = connection.prepareStatement(editTitleQuery);
+            stmt.setInt(1, newPrice);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+        } catch(SQLException e) {
+            throw new RuntimeException("Error editing ad price", e);
+        }
+    }
+
+    public void editDescription(String newDescription, int id) {
+        PreparedStatement stmt;
+        try {
+            String editTitleQuery = "UPDATE ads SET description = ? WHERE id = ?";
+            stmt = connection.prepareStatement(editTitleQuery);
+            stmt.setString(1, newDescription);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+        } catch(SQLException e) {
+            throw new RuntimeException("Error editing ad description", e);
+        }
+    }
+
+    public void editGenre(int newGenre, int id) {
+        PreparedStatement stmt;
+        try {
+            String editTitleQuery = "UPDATE ads SET genres_id = ? WHERE id = ?";
+            stmt = connection.prepareStatement(editTitleQuery);
+            stmt.setInt(1, newGenre);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+        } catch(SQLException e) {
+            throw new RuntimeException("Error editing ad genre", e);
+        }
+    }
+
+    public void editConditions(String newConditions, int id) {
+        PreparedStatement stmt;
+        try {
+            String editTitleQuery = "UPDATE ads SET condtions = ? WHERE id = ?";
+            stmt = connection.prepareStatement(editTitleQuery);
+            stmt.setString(1, newConditions);
+            stmt.setInt(2, id);
+            stmt.executeUpdate();
+        } catch(SQLException e) {
+            throw new RuntimeException("Error editing ad condition", e);
+        }
+    }
+
+//    public void add(Long id) {
+//        try {
+//            String addQuery = "UPDATE products SET quantity = quantity+1 WHERE id = ?";
+//            PreparedStatement stmt = connection.prepareStatement(addQuery);
+//            stmt.setLong(1, id);
+//            stmt.executeUpdate();
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error adding to product quantity.", e);
+//        }
+//    }
+//
+//    public void minus(Long id) {
+//        try {
+//            String addQuery = "UPDATE products SET quantity = quantity-1 WHERE id = ?";
+//            PreparedStatement stmt = connection.prepareStatement(addQuery);
+//            stmt.setLong(1, id);
+//            stmt.executeUpdate();
+//        } catch (SQLException e) {
+//            throw new RuntimeException("Error subtracting from product quantity.", e);
+//        }
+//    }
+
+    //DELETE functionality
     public int delete(int id) {
         PreparedStatement stmt;
         try {
