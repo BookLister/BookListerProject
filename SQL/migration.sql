@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS ads (
     genres_id INT UNSIGNED NOT NULL,
     title VARCHAR(255) NOT NULL,
     price DOUBLE UNSIGNED NOT NULL,
-    condition VARCHAR(255) NOT NULL,
+    conditions VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     summary TEXT NOT NULL,
     PRIMARY KEY (id),

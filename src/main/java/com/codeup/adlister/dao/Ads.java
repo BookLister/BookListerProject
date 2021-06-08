@@ -13,4 +13,8 @@ public interface Ads {
     List<Ad> searchAds(String string);
 
     List<Ad> filterAds(String val);
+
+    List<Ad> userAds(int id);
+
+    public int delete(int id);
 }

@@ -67,6 +67,34 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public List<Ad> userAds(int id) {
+        PreparedStatement stmt;
+        try {
+            String userAdsQuery = "SELECT * FROM ads JOIN users ON ads.users_id = users.id WHERE ads.users_id = ?";
+            stmt = connection.prepareStatement(userAdsQuery);
+            stmt.setInt(1, id);
+            System.out.println("id = " + id);
+            ResultSet rs = stmt.executeQuery();
+            return createAdsFromResults(rs);
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving user's ads.", e);
+        }
+    }
+
+    public int delete(int id) {
+        PreparedStatement stmt;
+        try {
+            String deleteQuery = "DELETE FROM ads WHERE id = ?";
+            stmt = connection.prepareStatement(deleteQuery);
+            stmt.setInt(1, id);
+            System.out.println("id = " + id);
+            int rs = stmt.executeUpdate();
+            return rs;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error deleting ad from database.", e);
+        }
+    }
+
     @Override
     public int insert(Ad ad) {
         try {
