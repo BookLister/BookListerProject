@@ -13,13 +13,7 @@
         <h1>Welcome, ${sessionScope.user.username}!</h1>
     </div>
 
-    <c:choose>
-        <c:when test="${isAdmin==true}">
-            <div>
 
-            </div>
-        </c:when>
-    </c:choose>
 
 </body>
 </html>
