@@ -17,4 +17,6 @@ public interface Ads {
     List<Ad> userAds(int id);
 
     public int delete(int id);
+
+    public boolean userAdsCheck(int id);
 }

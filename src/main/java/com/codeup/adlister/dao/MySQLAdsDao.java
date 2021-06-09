@@ -84,6 +84,20 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public boolean userAdsCheck(int id){
+        PreparedStatement stmt;
+        try{
+            String userAdsQuery = "SELECT * FROM ads JOIN users ON ads.users_id = users.id WHERE ads.users_id = ?";
+            stmt = connection.prepareStatement(userAdsQuery);
+            stmt.setInt(1, id);
+            System.out.println("id = " + id);
+            boolean rs = stmt.execute();
+            return rs;
+        }catch(SQLException e){
+            throw new RuntimeException("Error checking user's ads.", e);
+        }
+    }
+
     public void editTitle(String newTitle, int id) {
         PreparedStatement stmt;
         try {
@@ -148,28 +162,6 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error editing ad condition", e);
         }
     }
-
-//    public void add(Long id) {
-//        try {
-//            String addQuery = "UPDATE products SET quantity = quantity+1 WHERE id = ?";
-//            PreparedStatement stmt = connection.prepareStatement(addQuery);
-//            stmt.setLong(1, id);
-//            stmt.executeUpdate();
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error adding to product quantity.", e);
-//        }
-//    }
-//
-//    public void minus(Long id) {
-//        try {
-//            String addQuery = "UPDATE products SET quantity = quantity-1 WHERE id = ?";
-//            PreparedStatement stmt = connection.prepareStatement(addQuery);
-//            stmt.setLong(1, id);
-//            stmt.executeUpdate();
-//        } catch (SQLException e) {
-//            throw new RuntimeException("Error subtracting from product quantity.", e);
-//        }
-//    }
 
     //DELETE functionality
     public int delete(int id) {
