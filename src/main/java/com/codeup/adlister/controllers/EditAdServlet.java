@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "controllers.CreateAdServlet", urlPatterns = "/ads/edit")
+@WebServlet(name = "controllers.EditAdServlet", urlPatterns = "/edit")
 public class EditAdServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -22,8 +22,14 @@ public class EditAdServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int genre = Integer.parseInt(request.getParameter("genre"));
+        String title = request.getParameter("title");
+        double price = Double.parseDouble(request.getParameter("price"));
+        String condition = request.getParameter("condition");
+        String description = request.getParameter("description");
+        int adId = Integer.parseInt(request.getParameter("editMenu"));
 
-
+        DaoFactory.getAdsDao().editAd(genre, title, price, condition, description, adId);
         response.sendRedirect("/ads");
     }
 }

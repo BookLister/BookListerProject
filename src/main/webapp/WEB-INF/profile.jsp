@@ -14,7 +14,8 @@
 <div class="container">
     <h1>Welcome, ${sessionScope.user.username}!</h1>
 </div>
-<form action="ads/edit" method="post"></form>
+
+<a href="/edit">Edit an ad</a>
 
 <form action="/profile" method="post">
     <div class="form-group">

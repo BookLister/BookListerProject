@@ -7,6 +7,7 @@ public class Ad {
     public String title;
     public double price;
     public String description;
+    public String condition;
     public String summary;
 
 
@@ -22,11 +23,13 @@ public class Ad {
         this.summary = summary;
     }
 
-    public Ad(int user_id, int genre_id, String title, String description) {
+    public Ad(int user_id, int genre_id, String title, double price, String description, String condition) {
         this.users_id = user_id;
         this.genres_id = genre_id;
         this.title = title;
+        this.price = price;
         this.description = description;
+        this.condition = condition;
     }
 
     public int getId() {
@@ -83,5 +86,13 @@ public class Ad {
 
     public void setGenre_id(int genres_id){
         this.genres_id = genres_id;
+    }
+
+    public String getCondition(){
+        return condition;
+    }
+
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 }

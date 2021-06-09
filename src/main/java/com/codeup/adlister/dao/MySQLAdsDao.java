@@ -163,6 +163,23 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
+    public void editAd(int genres_id,String title, double price, String conditions, String description, int id){
+        PreparedStatement stmt;
+        try{
+            String editQuery = "UPDATE ads SET genres_id = ?, title = ?, price = ?, conditions = ?, description = ? WHERE id = ?";
+            stmt = connection.prepareStatement(editQuery);
+            stmt.setInt(1, genres_id);
+            stmt.setString(2, title);
+            stmt.setDouble(3, price);
+            stmt.setString(4, conditions);
+            stmt.setString(5, description);
+            stmt.setInt(6, id);
+            stmt.executeUpdate();
+        }catch(SQLException e){
+            throw new RuntimeException("Error editing ad", e);
+        }
+    }
+
     //DELETE functionality
     public int delete(int id) {
         PreparedStatement stmt;
@@ -181,14 +198,14 @@ public class MySQLAdsDao implements Ads {
     @Override
     public int insert(Ad ad) {
         try {
-            String insertQuery = "INSERT INTO ads(users_id, genres_id, title, price, description, summary) VALUES (?, ?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO ads(users_id, genres_id, title, price, description, conditions) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = connection.prepareStatement(insertQuery, Statement.RETURN_GENERATED_KEYS);
             stmt.setInt(1, ad.getUserId());
             stmt.setInt(2, ad.getGenre_id());
             stmt.setString(3, ad.getTitle());
             stmt.setDouble(4, ad.getPrice());
             stmt.setString(5, ad.getDescription());
-            stmt.setString(6, ad.getSummary());
+            stmt.setString(6, ad.getCondition());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();

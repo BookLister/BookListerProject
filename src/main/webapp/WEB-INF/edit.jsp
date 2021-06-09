@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: jakechadwell
@@ -11,10 +12,25 @@
     <title>Edit an ad</title>
 </head>
 <body>
-    <form action="/ads/edit" method="post">
+
+    <form action="/edit" method="post">
+        <div class="form-group">
+            <label for="edit">Edit one of these ads</label>
+            <select name="editMenu" id="edit">
+                <optgroup label="EDIT">
+                    <c:forEach var="userAds" items="${userAds}">
+                        <option value="${userAds.id}">${userAds.title}</option>
+                    </c:forEach>
+                </optgroup>
+            </select>
+        </div>
         <div class="form-group">
             <label for="title">Title</label>
-            <input id="title" name="title" class="form-control" type="text" value="${}">
+            <input id="title" name="title" class="form-control" type="text">
+        </div>
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input id="price" name="price" class="form-control" type="number">
         </div>
         <div class="form-group">
             <label for="genre">Choose a genre</label>
@@ -34,8 +50,18 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="condition">Choose a condition</label>
+            <select name="condition" id="condition">
+                <optgroup label="Genres">
+                    <option value="1">New</option>
+                    <option value="2">Slightly Used</option>
+                    <option value="3">Very Old</option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="form-group">
             <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control">${userAds.}</textarea>
+            <textarea id="description" name="description" class="form-control">}</textarea>
         </div>
         <input type="submit" class="btn btn-block btn-primary">
     </form>

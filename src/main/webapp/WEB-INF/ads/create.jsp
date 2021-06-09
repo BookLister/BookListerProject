@@ -14,6 +14,10 @@
                 <input id="title" name="title" class="form-control" type="text">
             </div>
             <div class="form-group">
+                <label for="price">Price</label>
+                <input id="price" name="price" class="form-control" type="number">
+            </div>
+            <div class="form-group">
                 <label for="genre">Choose a genre</label>
                 <select name="genre" id="genre">
                     <optgroup label="Genres">
@@ -31,8 +35,18 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="condition">Choose a condition</label>
+                <select name="condition" id="condition">
+                    <optgroup label="Genres">
+                        <option value="1">New</option>
+                        <option value="2">Slightly Used</option>
+                        <option value="3">Very Old</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="description">Description</label>
-                <textarea id="description" name="description" class="form-control" type="text"></textarea>
+                <textarea id="description" name="description" class="form-control"></textarea>
             </div>
             <input type="submit" class="btn btn-block btn-primary">
         </form>
