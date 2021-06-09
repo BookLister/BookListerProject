@@ -2,7 +2,7 @@ package com.codeup.adlister.dao;
 
 class Config {
     public String getUrl() {
-        return "jdbc:mysql://localhost/adlister_db?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
+        return "jdbc:mysql://localhost/booklister_db?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true";
     }
     public String getUser() {
         return "root";

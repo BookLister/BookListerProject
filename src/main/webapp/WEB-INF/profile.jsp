@@ -1,5 +1,7 @@
+<%@ page import="com.codeup.adlister.dao.DaoFactory" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -32,6 +34,11 @@
         <h2>${ad.title}</h2>
         <p>${ad.description}</p>
     </div>
+    <button data-toggle="collapse" data-target="#input">Edit</button>
+    <div id="input" class="collapse">
+        heyy
+    </div>
+
 </c:forEach>
 
 <%--    <c:choose>--%>
