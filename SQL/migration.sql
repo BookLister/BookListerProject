@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS ads (
     price DOUBLE UNSIGNED NOT NULL,
     conditions VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
-    summary TEXT NOT NULL,
+    summary TEXT,
     PRIMARY KEY (id),
     FOREIGN KEY (users_id) REFERENCES users(id),
     FOREIGN KEY (genres_id) REFERENCES genres(id)

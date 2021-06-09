@@ -28,10 +28,13 @@ public class CreateAdServlet extends HttpServlet {
 
         String genre_id_string = request.getParameter("genre");
         int genre_id = Integer.parseInt(genre_id_string);
+        double price = Double.parseDouble(request.getParameter("price"));
         Ad ad = new Ad(
                 user.getId(),
                 genre_id,
                 request.getParameter("title"),
+                price,
+                request.getParameter("condition"),
                 request.getParameter("description")
         );
         DaoFactory.getAdsDao().insert(ad);

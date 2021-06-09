@@ -15,6 +15,8 @@
     <h1>Welcome, ${sessionScope.user.username}!</h1>
 </div>
 
+<a href="/edit">Edit an ad</a>
+
 <form action="/profile" method="post">
     <div class="form-group">
         <label for="userads">Delete one of these ads</label>
@@ -34,20 +36,7 @@
         <h2>${ad.title}</h2>
         <p>${ad.description}</p>
     </div>
-    <button data-toggle="collapse" data-target="#input">Edit</button>
-    <div id="input" class="collapse">
-        heyy
-    </div>
-
 </c:forEach>
-
-<%--    <c:choose>--%>
-<%--        <c:when test="${isAdmin==true}">--%>
-<%--            <div>--%>
-
-<%--            </div>--%>
-<%--        </c:when>--%>
-<%--    </c:choose>--%>
 
 
 </body>
