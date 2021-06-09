@@ -14,6 +14,7 @@
 <div class="container">
     <h1>Welcome, ${sessionScope.user.username}!</h1>
 </div>
+<form action="ads/edit" method="post"></form>
 
 <form action="/profile" method="post">
     <div class="form-group">
@@ -34,20 +35,7 @@
         <h2>${ad.title}</h2>
         <p>${ad.description}</p>
     </div>
-    <button data-toggle="collapse" data-target="#input">Edit</button>
-    <div id="input" class="collapse">
-        heyy
-    </div>
-
 </c:forEach>
-
-<%--    <c:choose>--%>
-<%--        <c:when test="${isAdmin==true}">--%>
-<%--            <div>--%>
-
-<%--            </div>--%>
-<%--        </c:when>--%>
-<%--    </c:choose>--%>
 
 
 </body>
