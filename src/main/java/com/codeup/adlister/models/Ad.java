@@ -9,6 +9,7 @@ public class Ad {
     public String description;
     public String condition;
     public String summary;
+    public String image_url;
 
 
     public Ad() {}
@@ -21,6 +22,17 @@ public class Ad {
         this.price = price;
         this.description = description;
         this.summary = summary;
+    }
+
+    public Ad(int user_id, int genre_id, String title, double price, String description, String condition, String summary, String image_url) {
+        this.users_id = user_id;
+        this.genres_id = genre_id;
+        this.title = title;
+        this.price = price;
+        this.description = description;
+        this.condition = condition;
+        this.summary = summary;
+        this.image_url = image_url;
     }
 
     public Ad(int user_id, int genre_id, String title, double price, String description, String condition) {
@@ -94,5 +106,13 @@ public class Ad {
 
     public void setCondition(String condition) {
         this.condition = condition;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 }

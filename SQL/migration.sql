@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS ads (
     conditions VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
     summary TEXT,
+    image_url VARCHAR(255) NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (users_id) REFERENCES users(id),
     FOREIGN KEY (genres_id) REFERENCES genres(id)
