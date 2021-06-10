@@ -11,9 +11,7 @@ public interface Ads {
     // insert a new ad and return the new ad's id
     int insert(Ad ad);
 
-    List<Ad> searchAds(String string);
-
-    List<Ad> filterAds(String val);
+    List<Ad> filterAds(String filterTerm, String searchTerm);
 
     List<Ad> userAds(int id);
 
