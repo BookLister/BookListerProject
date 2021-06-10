@@ -18,7 +18,7 @@ public class EditAdServlet extends HttpServlet {
 
         User user = (User) request.getSession().getAttribute("user");
         request.setAttribute("userAds", DaoFactory.getAdsDao().userAds(user.getId()));
-        request.getRequestDispatcher("/WEB-INF/edit.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/ads/edit.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
