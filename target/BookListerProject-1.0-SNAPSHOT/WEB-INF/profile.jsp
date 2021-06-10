@@ -83,18 +83,13 @@
             <div class="col-md-5 book-text-right">
 
                 <div class="card-container">
-                    <div class="row">
-                        <input class="adfield" type="text" name="ad1" >
-                        <input class="adfield" type="text" name="ad2" >
-                    </div>
-                    <div class="row">
-                        <input class="adfield" type="text" name="ad3" >
-                        <input class="adfield" type="text" name="ad4" >
-                    </div>
-                    <div class="row">
-                        <input class="adfield" type="text" name="ad5" >
-                        <input class="adfield" type="text" name="ad6" >
-                    </div>
+                    <c:forEach items="${userAds}" var="ad">
+                        <div class="row">
+                            <h4>${ad.title}</h4>
+                            <h5>${ad.price}</h5>
+                            <p>${ad.description}</p>
+                        </div>
+                    </c:forEach>
                 </div>
                 <!--                <div class="col">-->
                 <!--                    <select class="form-select form-select-lg dropdown" aria-label="Condition"-->
