@@ -16,9 +16,11 @@ public class SearchFormServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String val = request.getParameter("search");
-        System.out.println("DaoFactory.getAdsDao().searchAds(val) = " + DaoFactory.getAdsDao().searchAds(val));
-        request.getSession().setAttribute("ads", DaoFactory.getAdsDao().searchAds(val));
+        String genreVal = request.getParameter("genreFilter");
+        String searchVal = request.getParameter("search");
+        request.getSession().setAttribute("ads", DaoFactory.getAdsDao().filterAds(genreVal));
+        request.getSession().setAttribute("ads", DaoFactory.getAdsDao().searchAds(searchVal));
+        response.sendRedirect("/filteredAds");
         response.sendRedirect("/searchAds");
     }
 }

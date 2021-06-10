@@ -38,34 +38,19 @@ public class MySQLAdsDao implements Ads {
         }
     }
 
-    // Search functionality
-    public List<Ad> searchAds(String searchTerm) {
-        PreparedStatement stmt;
-        try {
-            String searchQuery = "SELECT * FROM ads WHERE title LIKE ?";
-            String searchTermWithWildcards = "%" + searchTerm + "%";
-            stmt = connection.prepareStatement(searchQuery);
-            stmt.setString(1, searchTermWithWildcards);
-            System.out.println("stmt = " + stmt);
-            ResultSet rs = stmt.executeQuery();
-            return createAdsFromResults(rs);
-        } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving searched ads.", e);
-        }
-    }
-
     //Display filtered ads by genre
-    public List<Ad> filterAds(String filter) {
+    public List<Ad> filterAds(String filterTerm, String searchTerm) {
         PreparedStatement stmt;
         try {
-            String filterQuery = "SELECT * FROM ads JOIN genres ON ads.genres_id = genres.id WHERE ads.genres_id = ?";
+            String filterQuery = "SELECT * FROM ads JOIN genres ON ads.genres_id = genres.id WHERE ads.genres_id = ? AND title LIKE ?";
+            String searchTermWithWildcards = "%" + searchTerm + "%";
             stmt = connection.prepareStatement(filterQuery);
-            stmt.setString(1, filter);
-            System.out.println("stmt = " + stmt);
+            stmt.setString(1, filterTerm);
+            stmt.setString(2, searchTermWithWildcards);
             ResultSet rs = stmt.executeQuery();
             return createAdsFromResults(rs);
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving filtered ads.", e);
+            throw new RuntimeException("Error retrieving filtered/searched ads.", e);
         }
     }
 
