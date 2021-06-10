@@ -55,22 +55,22 @@
 
         var submitButton = document.querySelector('#submit');
         submitButton.addEventListener('click', getBooks);
-        $(document).on("click", "div.select" , function() {
-            let src = $("img.select").attr('src');
+        $(document).on("click", "img.select" , function() {
+            let src = $(this).attr('src');
             url.setAttribute("value", src)
             console.log(src);
         });
-        $(document).on("click", "div.select" , function() {
-            let bookName = $('h5.card-title').clone().html();
+        $(document).on("click", "h5.card-title" , function() {
+            let bookName = $(this).clone().html();
             title.setAttribute("value", bookName)
             console.log(bookName);
         });
-        $(document).on("click", "div.select" , function() {
-            let description = $('p.select').clone().html();
+        $(document).on("click", "p.select" , function() {
+            let description = $(this).clone().html();
             titleDescription.setAttribute("value", description)
         });
-        $(document).on("click", "div.select" , function() {
-            let author = $('h6.select').clone().html();
+        $(document).on("click", "h6.select" , function() {
+            let author = $(this).clone().html();
             authors.setAttribute("value", author)
         });
 
