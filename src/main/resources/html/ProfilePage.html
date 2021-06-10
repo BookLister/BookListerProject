@@ -1,14 +1,6 @@
-<%@ page import="com.codeup.adlister.dao.DaoFactory" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Create a new Ad" />
-    </jsp:include>
     <link rel="stylesheet" href="../CSS/create-edit-searchAd.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -28,8 +20,8 @@
 <body>
 <div class="row">
     <div class="col-2" id="bookmark">
-        <div><a class="revealedLinks" href="/login">LOGIN</a></div>
-        <div><a class="revealedLinks" href="/register">REGISTER</a></div>
+        <div><a class="revealedLinks" href="#">LOGIN</a></div>
+        <div><a class="revealedLinks" href="#">REGISTER</a></div>
     </div>
     <nav class="col-10 navigationWrapper">
         <div class="logoWrapper">
@@ -38,10 +30,10 @@
             <h3 class="subTitle">Find, Trade, Learn</h3>
         </div>
         <ul class="navigation">
-            <li class="clickable"><a class="link" href="/">HOME</a></li>
-            <li class="clickable"><a class="link" href="/search">SEARCH</a></li>
-            <li class="clickable"><a class="link" href="/ads/create">CREATE</a></li>
-            <li class="clickable"><a class="link" href="/edit">EDIT</a></li>
+            <li class="clickable"><a class="link" href="#">HOME</a></li>
+            <li class="clickable"><a class="link" href="#">SEARCH</a></li>
+            <li class="clickable"><a class="link" href="#">CREATE</a></li>
+            <li class="clickable"><a class="link" href="#">EDIT</a></li>
         </ul>
     </nav>
 </div>
@@ -83,18 +75,18 @@
             <div class="col-md-5 book-text-right">
 
                 <div class="card-container">
-                    <div class="row">
-                        <input class="adfield" type="text" name="ad1" >
-                        <input class="adfield" type="text" name="ad2" >
-                    </div>
-                    <div class="row">
-                        <input class="adfield" type="text" name="ad3" >
-                        <input class="adfield" type="text" name="ad4" >
-                    </div>
-                    <div class="row">
-                        <input class="adfield" type="text" name="ad5" >
-                        <input class="adfield" type="text" name="ad6" >
-                    </div>
+                <div class="row">
+                    <input class="adfield" type="text" name="ad1" >
+                    <input class="adfield" type="text" name="ad2" >
+                </div>
+                <div class="row">
+                    <input class="adfield" type="text" name="ad3" >
+                    <input class="adfield" type="text" name="ad4" >
+                </div>
+                <div class="row">
+                    <input class="adfield" type="text" name="ad5" >
+                    <input class="adfield" type="text" name="ad6" >
+                </div>
                 </div>
                 <!--                <div class="col">-->
                 <!--                    <select class="form-select form-select-lg dropdown" aria-label="Condition"-->
@@ -113,4 +105,3 @@
 </div>
 </body>
 </html>
-

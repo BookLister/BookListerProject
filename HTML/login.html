@@ -1,10 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <jsp:include page="/WEB-INF/partials/head.jsp">
-        <jsp:param name="title" value="Create a new Ad" />
-    </jsp:include>
     <link rel="stylesheet" href="../CSS/registerPageStyle.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
@@ -19,8 +15,8 @@
 <body>
 <div class="row">
     <div class="col-2" id="bookmark">
-        <div><a class="revealedLinks" href="/login">LOGIN</a></div>
-        <div><a class="revealedLinks" href="/register">REGISTER</a></div>
+        <div><a class="revealedLinks" href="#">LOGIN</a></div>
+        <div><a class="revealedLinks" href="#">REGISTER</a></div>
     </div>
     <nav class="col-10 navigationWrapper">
         <div class="logoWrapper">
@@ -29,10 +25,10 @@
             <h3 class="subTitle">Find, Trade, Learn</h3>
         </div>
         <ul class="navigation">
-            <li class="clickable"><a class="link" href="/">HOME</a></li>
-            <li class="clickable"><a class="link" href="/search">SEARCH</a></li>
-            <li class="clickable"><a class="link" href="/ads/create">CREATE</a></li>
-            <li class="clickable"><a class="link" href="/edit">EDIT</a></li>
+            <li class="clickable"><a class="link" href="#">HOME</a></li>
+            <li class="clickable"><a class="link" href="#">SEARCH</a></li>
+            <li class="clickable"><a class="link" href="#">CREATE</a></li>
+            <li class="clickable"><a class="link" href="#">EDIT</a></li>
         </ul>
     </nav>
 </div>
@@ -59,18 +55,17 @@
             <p class="title">Book Stack</p>
             <h2 class="subTitle">Find, Trade, Learn</h2>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <form action="/login" method="post">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <div class="row register-form">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input name="username" type="text" class="form-control" placeholder="Enter User Name *" value=""/>
+                                <input type="text" class="form-control" placeholder="Enter User Name *" value=""/>
                             </div>
 
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <input name="password" type="password" class="form-control" placeholder="Password *" value=""/>
+                                <input type="password" class="form-control" placeholder="Password *" value=""/>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -79,7 +74,6 @@
                             <input type="submit" class="btnRegister" value="login"/>
                         </div>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>

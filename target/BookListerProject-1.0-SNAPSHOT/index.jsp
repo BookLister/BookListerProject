@@ -20,8 +20,8 @@
 <body>
 <div class="row">
     <div class="col-2" id="bookmark">
-        <div><a class="revealedLinks" href="#">LOGIN</a></div>
-        <div><a class="revealedLinks" href="#">REGISTER</a></div>
+        <div><a class="revealedLinks" href="/login">LOGIN</a></div>
+        <div><a class="revealedLinks" href="/register">REGISTER</a></div>
     </div>
     <nav class="col-10 navigationWrapper">
         <div class="logoWrapper">
@@ -30,10 +30,10 @@
             <h3 class="subTitle">Find, Trade, Learn</h3>
         </div>
         <ul class="navigation">
-            <li class="clickable"><a class="link" href="#">HOME</a></li>
-            <li class="clickable"><a class="link" href="#">SEARCH</a></li>
-            <li class="clickable"><a class="link" href="#">CREATE</a></li>
-            <li class="clickable"><a class="link" href="#">EDIT</a></li>
+            <li class="clickable"><a class="link" href="/">HOME</a></li>
+            <li class="clickable"><a class="link" href="/search">SEARCH</a></li>
+            <li class="clickable"><a class="link" href="/ads/create">CREATE</a></li>
+            <li class="clickable"><a class="link" href="/edit">EDIT</a></li>
         </ul>
     </nav>
 </div>
